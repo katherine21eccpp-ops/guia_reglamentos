@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía ECCP Ecuador 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --vino: #6B1A2A;
+  --vino-dark: #4A0F1B;
+  --vino-light: #8C2438;
+  --vino-pale: #F5E8EA;
+  --gold: #C4972A;
+  --gold-light: #E8B94A;
+  --gold-pale: #FDF6E3;
+  --gray: #5A5A5A;
+  --gray-light: #8A8A8A;
+  --gray-pale: #F4F4F2;
+  --gray-border: #D8D6D0;
+  --white: #FFFFFF;
+  --text: #2A2A2A;
+  --shadow: 0 4px 24px rgba(107,26,42,0.10);
+  --shadow-gold: 0 4px 20px rgba(196,151,42,0.18);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Source Sans 3',sans-serif;background:#F0ECEB;color:var(--text);min-height:100vh}
+
+.header{background:linear-gradient(135deg,var(--vino-dark) 0%,var(--vino) 60%,var(--vino-light) 100%);color:white;position:relative;overflow:hidden}
+.header-bg-pattern{position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(196,151,42,0.07) 0px,rgba(196,151,42,0.07) 1px,transparent 1px,transparent 40px),repeating-linear-gradient(-45deg,rgba(196,151,42,0.07) 0px,rgba(196,151,42,0.07) 1px,transparent 1px,transparent 40px);pointer-events:none}
+.header-inner{position:relative;max-width:960px;margin:0 auto;padding:3rem 2rem 2.5rem;display:flex;align-items:center;gap:2rem}
+.header-logo{width:90px;height:90px;border-radius:50%;background:rgba(255,255,255,0.12);border:2px solid rgba(196,151,42,0.5);display:flex;align-items:center;justify-content:center;font-size:40px;flex-shrink:0;box-shadow:0 0 0 6px rgba(196,151,42,0.15)}
+.header-text h1{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;line-height:1.2;margin-bottom:6px}
+.header-text p{font-size:1rem;color:rgba(255,255,255,0.75);font-weight:300}
+.header-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.hbadge{background:rgba(196,151,42,0.25);border:1px solid rgba(196,151,42,0.5);color:var(--gold-light);padding:4px 14px;border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.5px}
+.gold-bar{height:4px;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-light) 50%,var(--gold) 100%)}
+
+.nav-container{background:var(--white);border-bottom:1px solid var(--gray-border);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.nav-inner{max-width:960px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-tab{padding:1rem 1.5rem;font-family:'Source Sans 3',sans-serif;font-size:14px;font-weight:600;color:var(--gray);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:8px}
+.nav-tab:hover{color:var(--vino);background:var(--vino-pale)}
+.nav-tab.active{color:var(--vino);border-bottom-color:var(--gold);background:var(--vino-pale)}
+.tab-icon{font-size:16px}
+
+.main{max-width:960px;margin:0 auto;padding:2rem 1.5rem}
+.section{display:none;animation:fadeIn .3s ease}
+.section.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+.card{background:var(--white);border-radius:12px;border:1px solid var(--gray-border);padding:1.5rem;margin-bottom:1.25rem;box-shadow:var(--shadow);transition:box-shadow .2s}
+.card:hover{box-shadow:0 6px 32px rgba(107,26,42,.13)}
+.card-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid var(--gray-border)}
+.card-icon{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.ic-vino{background:var(--vino-pale)}
+.ic-gold{background:var(--gold-pale)}
+.ic-gray{background:var(--gray-pale)}
+.card-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--vino)}
+.card-sub{font-size:12px;color:var(--gold);font-weight:600;margin-top:2px}
+
+.req-list{list-style:none}
+.req-list li{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--gray-border);font-size:14px;line-height:1.6;color:var(--text)}
+.req-list li:last-child{border-bottom:none}
+.req-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:6px}
+.dot-vino{background:var(--vino)}
+.dot-gold{background:var(--gold)}
+.dot-gray{background:var(--gray)}
+
+.steps-grid{display:flex;flex-direction:column;gap:12px}
+.step-item{display:flex;gap:16px;background:var(--white);border-radius:12px;border:1px solid var(--gray-border);padding:1.25rem;box-shadow:var(--shadow);transition:transform .15s,box-shadow .15s}
+.step-item:hover{transform:translateX(4px);box-shadow:var(--shadow-gold)}
+.step-num{width:36px;height:36px;border-radius:50%;background:var(--vino);color:white;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Playfair Display',serif}
+.step-title{font-size:15px;font-weight:600;color:var(--vino-dark);margin-bottom:6px;font-family:'Playfair Display',serif}
+.step-desc{font-size:13px;color:var(--gray);line-height:1.6}
+.step-note{display:inline-block;margin-top:8px;font-size:12px;background:var(--gold-pale);color:var(--gold);border:1px solid rgba(196,151,42,.3);padding:3px 10px;border-radius:20px;font-weight:600}
+.step-docs{margin-top:10px;background:var(--vino-pale);border-radius:8px;padding:10px 14px}
+.step-docs-title{font-size:12px;font-weight:600;color:var(--vino);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
+.step-docs ul{list-style:none}
+.step-docs ul li{font-size:13px;color:var(--vino-dark);padding:3px 0;display:flex;gap:8px;align-items:flex-start}
+.step-docs ul li::before{content:"▸";color:var(--gold);margin-top:1px}
+
+.sanction-level{border-radius:12px;overflow:hidden;margin-bottom:1.25rem;box-shadow:var(--shadow)}
+.sanction-header{padding:14px 20px;display:flex;align-items:center;gap:12px;cursor:pointer;user-select:none}
+.sanction-header h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;flex:1}
+.sanction-header .chevron{font-size:12px;transition:transform .2s}
+.sanction-level.open .chevron{transform:rotate(180deg)}
+.sanction-body{display:none;padding:0 20px 16px;background:var(--white);border:1px solid var(--gray-border);border-top:none;border-radius:0 0 12px 12px}
+.sanction-level.open .sanction-body{display:block}
+.s-list{list-style:none;margin-top:10px}
+.s-list li{font-size:13px;color:var(--gray);padding:6px 0;display:flex;gap:10px;align-items:flex-start;line-height:1.5;border-bottom:1px solid var(--gray-border)}
+.s-list li:last-child{border-bottom:none}
+.s-list li::before{content:"▸";flex-shrink:0;margin-top:1px}
+.sl-verde .sanction-header{background:#EAF3DE}
+.sl-verde .sanction-header h3{color:#3B6D11}
+.sl-amber .sanction-header{background:var(--gold-pale)}
+.sl-amber .sanction-header h3{color:#6B4A10}
+.sl-orange .sanction-header{background:#FDE8D8}
+.sl-orange .sanction-header h3{color:#7A2E0A}
+.sl-rojo .sanction-header{background:var(--vino-pale)}
+.sl-rojo .sanction-header h3{color:var(--vino-dark)}
+.caso-real{margin-top:12px;background:var(--vino-pale);border-left:3px solid var(--vino);border-radius:0 8px 8px 0;padding:10px 14px}
+.caso-real-title{font-size:12px;font-weight:600;color:var(--vino);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}
+.caso-real p{font-size:13px;color:var(--vino-dark);line-height:1.5}
+
+.normas-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.norma-card{background:var(--white);border-radius:12px;border:1px solid var(--gray-border);overflow:hidden;box-shadow:var(--shadow);transition:transform .15s}
+.norma-card:hover{transform:translateY(-2px)}
+.norma-card.featured{border-color:var(--gold);box-shadow:var(--shadow-gold)}
+.norma-card-head{background:var(--vino);padding:14px 16px;display:flex;align-items:center;gap:10px}
+.norma-card-head .icon{font-size:20px}
+.norma-card-head h3{font-family:'Playfair Display',serif;font-size:13px;font-weight:600;color:white}
+.norma-card-head .priority{margin-left:auto;font-size:11px;padding:2px 8px;border-radius:10px;font-weight:600}
+.p-max{background:var(--gold);color:var(--vino-dark)}
+.p-alta{background:rgba(255,255,255,.2);color:rgba(255,255,255,.9)}
+.p-med{background:rgba(255,255,255,.12);color:rgba(255,255,255,.7)}
+.norma-card-body{padding:14px 16px}
+.art-item{padding:8px 0;border-bottom:1px solid var(--gray-border)}
+.art-item:last-child{border-bottom:none}
+.art-num{font-size:12px;font-weight:600;color:var(--gold);margin-bottom:3px}
+.art-desc{font-size:13px;color:var(--gray);line-height:1.5}
+
+.memory-box{background:linear-gradient(135deg,var(--vino-dark) 0%,var(--vino) 100%);border-radius:12px;padding:1.5rem;color:white;margin-top:1.25rem;box-shadow:var(--shadow)}
+.memory-box h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold-light);margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+.memory-list{list-style:none}
+.memory-list li{display:flex;gap:12px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:13px;line-height:1.5}
+.memory-list li:last-child{border-bottom:none}
+.memory-list .art{color:var(--gold-light);font-weight:600;flex-shrink:0;min-width:180px}
+.memory-list .desc{color:rgba(255,255,255,.8)}
+
+.alert-box{border-radius:10px;padding:14px 18px;margin-bottom:1.25rem;display:flex;gap:12px;align-items:flex-start}
+.alert-danger{background:var(--vino-pale);border:1px solid rgba(107,26,42,.25)}
+.alert-warning{background:var(--gold-pale);border:1px solid rgba(196,151,42,.35)}
+.alert-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+.alert-title{font-size:14px;font-weight:600;color:var(--vino);margin-bottom:4px}
+.alert-warning .alert-title{color:#7A5010}
+.alert-text{font-size:13px;line-height:1.6;color:var(--vino-dark)}
+.alert-warning .alert-text{color:#6B4A10}
+
+.info-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:1.5rem}
+.info-mini{background:var(--white);border-radius:10px;border:1px solid var(--gray-border);padding:1rem;text-align:center;box-shadow:var(--shadow)}
+.info-mini .icon{font-size:28px;margin-bottom:8px;display:block}
+.info-mini .label{font-size:11px;color:var(--gray-light);text-transform:uppercase;letter-spacing:.5px;font-weight:600}
+.info-mini .value{font-size:1.4rem;font-weight:700;color:var(--vino);font-family:'Playfair Display',serif}
+.info-mini .sublabel{font-size:11px;color:var(--gray-light)}
+
+.img-overlay{position:relative;border-radius:12px;overflow:hidden;margin-bottom:1.5rem}
+.img-overlay img{width:100%;height:160px;object-fit:cover;display:block;filter:brightness(.55) sepia(.2)}
+.img-overlay-text{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(74,15,27,.95) 0%,transparent 100%);padding:1.5rem 1.25rem 1rem;color:white}
+.img-overlay-text h2{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:4px}
+.img-overlay-text p{font-size:13px;color:rgba(255,255,255,.75)}
+
+.footer{background:var(--vino-dark);color:rgba(255,255,255,.6);text-align:center;padding:1.5rem;font-size:12px;margin-top:3rem}
+.footer strong{color:var(--gold-light)}
+
+@media(max-width:640px){
+  .header-inner{flex-direction:column;text-align:center;gap:1rem}
+  .header-text h1{font-size:1.5rem}
+  .header-badges{justify-content:center}
+  .normas-grid{grid-template-columns:1fr}
+  .info-row{grid-template-columns:1fr}
+  .memory-list .art{min-width:130px}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-bg-pattern"></div>
+  <div class="header-inner">
+    <div class="header-logo">🚗</div>
+    <div class="header-text">
+      <h1>Guía ECCP Ecuador 2026</h1>
+      <p>Escuelas de Capacitación para Conductores Profesionales</p>
+      <div class="header-badges">
+        <span class="hbadge">ANT Ecuador</span>
+        <span class="hbadge">Res. 010-DIR-2015-ANT</span>
+        <span class="hbadge">LOTTTSV Vigente</span>
+        <span class="hbadge">Actualizado 2026</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="gold-bar"></div>
+
+<div class="nav-container">
+  <div class="nav-inner">
+    <button class="nav-tab active" onclick="showSection('instructores',this)"><span class="tab-icon">👨‍🏫</span> Instructores</button>
+    <button class="nav-tab" onclick="showSection('matricula',this)"><span class="tab-icon">📋</span> Matriculación</button>
+    <button class="nav-tab" onclick="showSection('sanciones',this)"><span class="tab-icon">⚠️</span> Sanciones</button>
+    <button class="nav-tab" onclick="showSection('normas',this)"><span class="tab-icon">📜</span> Normas Clave</button>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- INSTRUCTORES -->
+  <div id="instructores" class="section active">
+    <div class="img-overlay">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=960&q=70" alt="Instructor de conducción">
+      <div class="img-overlay-text">
+        <h2>Requisitos para Instructores</h2>
+        <p>Res. 010-DIR-2015-ANT — Arts. 30 y siguientes</p>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-mini"><span class="icon">🎓</span><div class="label">Experiencia mínima</div><div class="value">3 años</div><div class="sublabel">Instructor práctico</div></div>
+      <div class="info-mini"><span class="icon">📄</span><div class="label">Validez examen</div><div class="value">60 días</div><div class="sublabel">Psicosensométrico</div></div>
+      <div class="info-mini"><span class="icon">✅</span><div class="label">Habilitación</div><div class="value">ANT</div><div class="sublabel">Registro vigente obligatorio</div></div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon ic-vino">📚</div>
+        <div><div class="card-title">Requisitos — Instructor Teórico</div><div class="card-sub">Art. 30 y ss. Res. 010-DIR-2015-ANT</div></div>
+      </div>
+      <ul class="req-list">
+        <li><span class="req-dot dot-vino"></span>Título académico en áreas afines: Ingeniería de Transporte, Derecho de Tránsito, Psicología, Medicina u otras según la materia a impartir</li>
+        <li><span class="req-dot dot-vino"></span>Registro de instructor teórico habilitado y vigente ante la ANT (renovación periódica obligatoria)</li>
+        <li><span class="req-dot dot-vino"></span>Licencia de conducir profesional vigente y sin infracciones pendientes</li>
+        <li><span class="req-dot dot-vino"></span>Certificado de antecedentes personales — Récord Policial actualizado</li>
+        <li><span class="req-dot dot-vino"></span>Examen psicosensométrico original vigente (validez máxima: 60 días)</li>
+        <li><span class="req-dot dot-vino"></span>Examen médico vigente emitido por institución reconocida</li>
+        <li><span class="req-dot dot-vino"></span>No haber sido sancionado disciplinariamente por la ANT en proceso anterior</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon ic-gold">🚗</div>
+        <div><div class="card-title">Requisitos — Instructor Práctico</div><div class="card-sub">Art. 35 y ss. Res. 010-DIR-2015-ANT</div></div>
+      </div>
+      <ul class="req-list">
+        <li><span class="req-dot dot-gold"></span>Licencia de conducir profesional de la <strong>misma categoría</strong> que va a enseñar, con mínimo <strong>3 años de experiencia activa</strong> en esa categoría</li>
+        <li><span class="req-dot dot-gold"></span>Registro de instructor práctico habilitado en la ANT con renovación vigente</li>
+        <li><span class="req-dot dot-gold"></span>Certificado de Instructor de Conducción emitido por la ANT o institución autorizada por ella</li>
+        <li><span class="req-dot dot-gold"></span>Examen psicosensométrico original vigente (validez: 60 días)</li>
+        <li><span class="req-dot dot-gold"></span>Certificado médico vigente</li>
+        <li><span class="req-dot dot-gold"></span>Récord policial sin antecedentes penales</li>
+        <li><span class="req-dot dot-gold"></span>No tener sanciones activas de tránsito ni puntos reducidos por infracciones graves</li>
+        <li><span class="req-dot dot-gold"></span>Vehículo de práctica con revisión técnica vehicular vigente y autorización expresa de la ANT para uso en instrucción</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon ic-gray">📌</div>
+        <div><div class="card-title">Obligaciones permanentes del Instructor</div><div class="card-sub">Art. 188 LOTTTSV (reforma 2021) + Res. 010-DIR-2015-ANT</div></div>
+      </div>
+      <ul class="req-list">
+        <li><span class="req-dot dot-gray"></span>Impartir clases <strong>únicamente</strong> en los horarios y jornadas autorizadas por la ANT para ese período</li>
+        <li><span class="req-dot dot-gray"></span>Cumplir íntegramente la malla curricular aprobada — ninguna hora puede omitirse ni reducirse</li>
+        <li><span class="req-dot dot-gray"></span>Registrar la asistencia de cada sesión (teórica y práctica) en los formularios oficiales de la ECCP</li>
+        <li><span class="req-dot dot-gray"></span>Transversalizar en sus clases: <em>inclusión social, enfoque intercultural y derechos de niñas, niños y adolescentes a una vida sin violencia</em> (mandato expreso Art. 188 LOTTTSV)</li>
+        <li><span class="req-dot dot-gray"></span>Está prohibido recibir pagos directos del alumno — todo cobro canaliza exclusivamente por la ECCP</li>
+        <li><span class="req-dot dot-gray"></span>Prohibida la intermediación o tercerización laboral bajo cualquier figura contractual</li>
+        <li><span class="req-dot dot-gray"></span>La capacitación práctica siempre debe ser <strong>presencial</strong> — nunca virtual</li>
+      </ul>
+    </div>
+    <div class="alert-box alert-danger">
+      <span class="alert-icon">🚨</span>
+      <div>
+        <div class="alert-title">Contexto ANT — 2026</div>
+        <div class="alert-text">La ANT atravesó una investigación interna por corrupción a inicios de 2026. Los procesos de habilitación de instructores y autorización de períodos pueden presentar demoras. Verificar en <strong>ant.gob.ec</strong> antes de comprometer fechas de inicio.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MATRICULACIÓN -->
+  <div id="matricula" class="section">
+    <div class="img-overlay">
+      <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=960&q=70" alt="Proceso de matriculación">
+      <div class="img-overlay-text">
+        <h2>Proceso de Matriculación</h2>
+        <p>Art. 16 y 17 Res. 010-DIR-2015-ANT · Art. 4 Res. 066-DIR-2015-ANT</p>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-mini"><span class="icon">⏱️</span><div class="label">Respuesta ANT</div><div class="value">30 días</div><div class="sublabel">Autorización de inicio</div></div>
+      <div class="info-mini"><span class="icon">📤</span><div class="label">Envío nómina</div><div class="value">5 días</div><div class="sublabel">Tras cierre de matrículas</div></div>
+      <div class="info-mini"><span class="icon">🌅</span><div class="label">Jornadas máx.</div><div class="value">3</div><div class="sublabel">Diurna / Vespertina / Nocturna</div></div>
+    </div>
+    <div class="steps-grid">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div>
+          <div class="step-title">Solicitud de autorización a la ANT</div>
+          <div class="step-desc">La ECCP presenta ante la Coordinación General de Gestión y Control del Transporte Terrestre la solicitud de inicio de período de matriculación, indicando tipo de licencia, jornadas solicitadas y capacidad de alumnos.</div>
+          <span class="step-note">⏱ Plazo máximo de respuesta ANT: 30 días — Art. 16 Res. 010-DIR-2015-ANT</span>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div>
+          <div class="step-title">Pago de tasa ANT</div>
+          <div class="step-desc">Se cancela la tasa según el tarifario vigente (Res. 025-DIR-2023-ANT). Para cursos en modalidad virtual, el pago se realiza por cada sucursal habilitada.</div>
+          <span class="step-note">📌 Res. 028-DE-ANT-2020 — modalidad virtual teórica</span>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div>
+          <div class="step-title">Recepción del oficio de autorización oficial</div>
+          <div class="step-desc">La ANT emite el oficio con: fechas exactas de inicio/fin de matrículas, inicio/fin de clases, jornadas autorizadas (máx. 3), horarios de teoría y práctica, y número máximo de alumnos permitidos.</div>
+          <span class="step-note">⚡ Res. ANT-ANT-2024-0008-R — delegación vigente 2024–2026</span>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div>
+          <div class="step-title">Matrícula del estudiante — documentos exigidos</div>
+          <div class="step-desc">La ECCP recibe y verifica documentos de cada alumno durante el período autorizado.</div>
+          <div class="step-docs">
+            <div class="step-docs-title">📄 Documentos obligatorios — Art. 17 Res. 010-DIR-2015-ANT</div>
+            <ul>
+              <li>Copia a color de la cédula de ciudadanía</li>
+              <li>Certificado de grupo y tipo sanguíneo</li>
+              <li>Comprobante de pago de matrícula emitido por la ECCP</li>
+              <li>Originales de pruebas psicológicas, psicosensométricas y médicas</li>
+              <li>Dos fotografías tamaño carné a color</li>
+              <li>Para lic. C, D, E: certificado de 1.° de bachillerato aprobado</li>
+              <li>Para lic. A1, A, F, G: certificado de educación básica aprobada</li>
+              <li>Para lic. G: adicionalmente, licencia tipo C con mínimo 2 años de antigüedad</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">5</div>
+        <div>
+          <div class="step-title">Envío de nómina de matriculados a la ANT</div>
+          <div class="step-desc">Dentro de los 5 días hábiles tras el cierre del período, la ECCP remite a la Dirección de Títulos Habilitantes: la solicitud de venta y legalización de permisos de aprendizaje, y la nómina completa de alumnos (físico y digital).</div>
+          <span class="step-note">⏰ Plazo fatal: 5 días — Art. 4 Res. 066-DIR-2015-ANT. Si se vence: sin permisos, sin clases.</span>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">6</div>
+        <div>
+          <div class="step-title">Emisión de permisos de aprendizaje</div>
+          <div class="step-desc">La ANT emite un permiso individual por cada alumno. Para escuelas profesionales lo gestiona la Dirección de Títulos Habilitantes (ANT Matriz). Sin este permiso, el alumno no puede iniciar ninguna actividad de capacitación.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">7</div>
+        <div>
+          <div class="step-title">Inicio de clases</div>
+          <div class="step-desc">Solo con autorización vigente y permisos de aprendizaje en regla. Máximo 3 jornadas por período. La práctica es siempre presencial. La teoría puede ser virtual únicamente si la plataforma fue aprobada previamente por la ANT.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">8</div>
+        <div>
+          <div class="step-title">Control de asistencia y evaluaciones finales</div>
+          <div class="step-desc">Se registra asistencia por sesión durante todo el curso. La ANT puede participar en evaluaciones finales. Se verifica la malla curricular y la carga horaria completa antes de emitir el certificado o título habilitante.</div>
+          <span class="step-note">📌 Res. 586-DE-ANT-2015 — mínimo 1 curso regular por año calendario</span>
+        </div>
+      </div>
+    </div>
+    <div class="alert-box alert-warning">
+      <span class="alert-icon">💡</span>
+      <div>
+        <div class="alert-title">Regla de oro del proceso</div>
+        <div class="alert-text">Si en alguno de los pasos 1 al 6 hay un documento faltante, un plazo incumplido o una irregularidad, <strong>todo el proceso se suspende automáticamente</strong>. La Dirección de Control Técnico Sectorial emite un informe desfavorable y la Asesoría Jurídica abre un expediente sancionatorio (Memorando ANT-DE-2015-0567).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SANCIONES -->
+  <div id="sanciones" class="section">
+    <div class="img-overlay">
+      <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=960&q=70" alt="Marco legal">
+      <div class="img-overlay-text">
+        <h2>Régimen de Sanciones ECCP</h2>
+        <p>Art. 93 LOTTTSV · Arts. 5, 8, 11, 52 y 57 Reglamento ECCP · Arts. 259 y 260 Reglamento Aplicación</p>
+      </div>
+    </div>
+    <div class="alert-box alert-danger">
+      <span class="alert-icon">📌</span>
+      <div>
+        <div class="alert-title">Base legal de las sanciones</div>
+        <div class="alert-text"><strong>Art. 93 LOTTTSV</strong> — Faculta a la ANT para clausurar definitivamente.<br><strong>Arts. 5, 8, 11, 52 y 57 Res. 010-DIR-2015-ANT</strong> — Causales directas de sanción.<br><strong>Arts. 259 y 260 del Reglamento de Aplicación LOTTTSV</strong> — Causales complementarias de clausura definitiva.</div>
+      </div>
+    </div>
+
+    <div class="sanction-level sl-verde open" onclick="toggleSanction(this)">
+      <div class="sanction-header"><span>🟢</span><h3>Nivel 1 — Amonestación / Observación escrita</h3><span class="chevron">▼</span></div>
+      <div class="sanction-body">
+        <ul class="s-list">
+          <li>Documentación incompleta o con errores formales subsanables</li>
+          <li>Pequeñas demoras en entrega de nóminas sin reincidencia previa</li>
+          <li>Incumplimientos menores de forma en registros académicos internos</li>
+          <li>Primera advertencia por deficiencias leves en instalaciones o equipamiento</li>
+        </ul>
+        <p style="font-size:12px;color:var(--gray-light);margin-top:10px;font-style:italic">La reincidencia eleva automáticamente la sanción al nivel siguiente.</p>
+      </div>
+    </div>
+
+    <div class="sanction-level sl-amber" onclick="toggleSanction(this)">
+      <div class="sanction-header"><span>🟡</span><h3>Nivel 2 — Suspensión temporal de actividades</h3><span class="chevron">▼</span></div>
+      <div class="sanction-body">
+        <ul class="s-list">
+          <li>Iniciar matrículas o clases sin la autorización previa de la ANT</li>
+          <li>Superar el número máximo de alumnos autorizado por el oficio de inicio</li>
+          <li>Incumplimiento de la malla curricular o de la carga horaria establecida</li>
+          <li>Funcionamiento con instructores no habilitados por la ANT</li>
+          <li>No enviar la nómina de matriculados dentro del plazo fatal de 5 días</li>
+          <li>Informe desfavorable de la Dirección de Control Técnico Sectorial</li>
+          <li>Deficiencias graves en infraestructura, aulas o vehículos de práctica</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sanction-level sl-orange" onclick="toggleSanction(this)">
+      <div class="sanction-header"><span>🟠</span><h3>Nivel 3 — Suspensión + Expediente administrativo sancionatorio</h3><span class="chevron">▼</span></div>
+      <div class="sanction-body">
+        <ul class="s-list">
+          <li>Reincidencia en incumplimientos graves previamente notificados por escrito</li>
+          <li>Intermediación o tercerización laboral (violación directa Art. 188 LOTTTSV)</li>
+          <li>Emitir certificados o títulos a alumnos que no completaron el programa</li>
+          <li>No presentar documentación ante requerimiento formal de la ANT</li>
+          <li>Uso de plataformas virtuales no aprobadas por la ANT para impartir teoría</li>
+          <li>Apertura de actividades durante una suspensión vigente</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sanction-level sl-rojo" onclick="toggleSanction(this)">
+      <div class="sanction-header"><span>🔴</span><h3>Nivel 4 — CLAUSURA DEFINITIVA — Revocatoria total de autorización</h3><span class="chevron">▼</span></div>
+      <div class="sanction-body">
+        <p style="font-size:13px;color:var(--vino-dark);margin-bottom:10px;line-height:1.6;font-weight:600">Sanción máxima. Aplicada por el Directorio de la ANT. Cierre total, permanente e irrevocable de todas las sedes a nivel nacional.</p>
+        <ul class="s-list" style="color:var(--vino-dark)">
+          <li>Funcionamiento sin autorización vigente — violación directa Art. 188 LOTTTSV</li>
+          <li>Violación de los Arts. 5, 8, 11, 52 y 57 del Reglamento de ECCP</li>
+          <li>Violación de los Arts. 259 y 260 del Reglamento de Aplicación LOTTTSV</li>
+          <li>Apertura de sucursales sin autorización del Directorio (Disposición Transitoria Sexta)</li>
+          <li>Fraude documentario comprobado o emisión irregular de títulos habilitantes</li>
+          <li>Incumplimiento reiterado tras expediente administrativo resuelto en contra</li>
+        </ul>
+        <div class="caso-real">
+          <div class="caso-real-title">⚖️ Caso real — Precedente legal</div>
+          <p>La escuela <strong>ITESUT</strong> fue clausurada definitivamente a nivel nacional mediante Resolución <strong>174-2012</strong>, por violación de los Arts. 5, 8, 11, 52 y 57 del Reglamento ECCP y los Arts. 259 y 260 del Reglamento de Aplicación. Se revocaron todas las autorizaciones emitidas.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert-box alert-danger" style="margin-top:1.25rem">
+      <span class="alert-icon">🛑</span>
+      <div>
+        <div class="alert-title">Suspensión automática del proceso de autorización</div>
+        <div class="alert-text">Todo proceso de autorización queda suspendido de inmediato si la Dirección de Control Técnico Sectorial emite un informe con observaciones de incumplimiento. La Asesoría Jurídica abre entonces el expediente sancionatorio. — <em>Memorando ANT-DE-2015-0567</em></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NORMAS CLAVE -->
+  <div id="normas" class="section">
+    <div class="img-overlay">
+      <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=960&q=70" alt="Marco normativo">
+      <div class="img-overlay-text">
+        <h2>Marco Normativo Completo</h2>
+        <p>Leyes, reglamentos y resoluciones que rigen las ECCP en Ecuador</p>
+      </div>
+    </div>
+
+    <div class="normas-grid">
+      <div class="norma-card featured">
+        <div class="norma-card-head"><span class="icon">⚖️</span><h3>LOTTTSV — Ley Orgánica</h3><span class="priority p-max">MÁXIMA</span></div>
+        <div class="norma-card-body">
+          <div class="art-item"><div class="art-num">Art. 16</div><div class="art-desc">Define a la ANT como ente regulador y controlador del transporte terrestre a nivel nacional.</div></div>
+          <div class="art-item"><div class="art-num">Arts. 188–195</div><div class="art-desc">Bloque completo de escuelas de conducción: quién forma, condiciones, prohibiciones, modalidades.</div></div>
+          <div class="art-item"><div class="art-num">Art. 93</div><div class="art-desc">Facultad de la ANT para clausurar definitivamente.</div></div>
+          <div class="art-item"><div class="art-num">Art. 96</div><div class="art-desc">Cambio de categoría: mín. 2 años en lic. inferior. Para tipo G: mín. 2 años con lic. C.</div></div>
+        </div>
+      </div>
+      <div class="norma-card">
+        <div class="norma-card-head"><span class="icon">📋</span><h3>Res. 010-DIR-2015-ANT</h3><span class="priority p-max">MÁXIMA</span></div>
+        <div class="norma-card-body">
+          <div class="art-item"><div class="art-num">Art. 16</div><div class="art-desc">Autorización de inicio de clases: plazo 30 días, máx. 3 jornadas autorizadas.</div></div>
+          <div class="art-item"><div class="art-num">Art. 17</div><div class="art-desc">Lista taxativa de documentos obligatorios en la matrícula de cada alumno.</div></div>
+          <div class="art-item"><div class="art-num">Arts. 5, 8, 11, 52, 57</div><div class="art-desc">Causales directas de clausura definitiva. Los más citados en expedientes sancionatorios.</div></div>
+        </div>
+      </div>
+      <div class="norma-card">
+        <div class="norma-card-head"><span class="icon">🔧</span><h3>Res. 066-DIR-2015-ANT</h3><span class="priority p-alta">ALTA</span></div>
+        <div class="norma-card-body">
+          <div class="art-item"><div class="art-num">Art. 4 (reforma Art. 18)</div><div class="art-desc">Nómina de matriculados debe enviarse en máximo <strong>5 días</strong> tras el cierre del período.</div></div>
+        </div>
+      </div>
+      <div class="norma-card">
+        <div class="norma-card-head"><span class="icon">📅</span><h3>Res. 586-DE-ANT-2015</h3><span class="priority p-alta">ALTA</span></div>
+        <div class="norma-card-body">
+          <div class="art-item"><div class="art-num">Art. 8</div><div class="art-desc">Toda ECCP debe realizar mínimo 1 curso regular por año más los cursos de convalidación que su capacidad permita.</div></div>
+        </div>
+      </div>
+      <div class="norma-card">
+        <div class="norma-card-head"><span class="icon">💻</span><h3>Res. 028-DE-ANT-2020</h3><span class="priority p-alta">ALTA</span></div>
+        <div class="norma-card-body">
+          <div class="art-item"><div class="art-num">Art. 3</div><div class="art-desc">Clases teóricas virtuales: solicitud previa, plataforma aprobada por ANT, pago por sucursal. La práctica siempre presencial.</div></div>
+        </div>
+      </div>
+      <div class="norma-card">
+        <div class="norma-card-head"><span class="icon">🏛️</span><h3>Res. ANT-ANT-2024-0008-R</h3><span class="priority p-alta">VIGENTE 2026</span></div>
+        <div class="norma-card-body">
+          <div class="art-item"><div class="art-num">Art. 10</div><div class="art-desc">Delega al Coordinador/a General la autorización de matrículas, inicio de clases y prórrogas para escuelas profesionales.</div></div>
+        </div>
+      </div>
+      <div class="norma-card">
+        <div class="norma-card-head"><span class="icon">💰</span><h3>Res. 025-DIR-2023-ANT</h3><span class="priority p-med">OPERATIVA</span></div>
+        <div class="norma-card-body">
+          <div class="art-item"><div class="art-num">Cuadro tarifario</div><div class="art-desc">Define los costos de todos los trámites ante la ANT: habilitación, permisos, renovaciones.</div></div>
+        </div>
+      </div>
+      <div class="norma-card">
+        <div class="norma-card-head"><span class="icon">📂</span><h3>Res. 018-DIR-2022-ANT</h3><span class="priority p-med">OPERATIVA</span></div>
+        <div class="norma-card-body">
+          <div class="art-item"><div class="art-num">Trámites simplificados</div><div class="art-desc">Regula la optimización y simplificación de todos los trámites regulados por la ANT.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="memory-box">
+      <h3>🧠 Artículos que no puedes olvidar JAMÁS</h3>
+      <ul class="memory-list">
+        <li><span class="art">Art. 188 LOTTTSV</span><span class="desc">La norma madre. Define todo el sistema de formación. Prohíbe intermediación, permite virtualidad solo en teoría.</span></li>
+        <li><span class="art">Art. 16 Res. 010-DIR-2015</span><span class="desc">Sin autorización previa de la ANT, no hay clases. Plazo de respuesta: 30 días. Jornadas máximas: 3.</span></li>
+        <li><span class="art">Art. 17 Res. 010-DIR-2015</span><span class="desc">Lista exacta de documentos de matrícula. Si falta uno, el alumno no puede inscribirse.</span></li>
+        <li><span class="art">Art. 4 Res. 066-DIR-2015</span><span class="desc">5 días para enviar la nómina. Si se vence: sin permisos de aprendizaje y el curso queda paralizado.</span></li>
+        <li><span class="art">Art. 96 LOTTTSV</span><span class="desc">Para lic. G: el alumno necesita mínimo 2 años con lic. tipo C activa. La ECCP debe verificarlo antes de matricular.</span></li>
+        <li><span class="art">Arts. 5,8,11,52,57 Reg.ECCP</span><span class="desc">Los cinco artículos que llevan directamente a clausura definitiva. Eje de todos los expedientes sancionatorios graves.</span></li>
+        <li><span class="art">Arts. 259–260 Reg. Aplicación</span><span class="desc">Causales complementarias de clausura. Siempre se citan junto con los arts. 5, 8, 11, 52 y 57.</span></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>Guía elaborada con base en la normativa vigente de la <strong>Agencia Nacional de Tránsito (ANT) Ecuador</strong></p>
+  <p style="margin-top:6px">LOTTTSV (reforma 2021) · Res. 010-DIR-2015-ANT · Res. 066-DIR-2015-ANT · Res. ANT-ANT-2024-0008-R · Actualizado 2026</p>
+  <p style="margin-top:6px">Para verificar normativa actualizada: <strong>ant.gob.ec</strong></p>
+</div>
+
+<script>
+function showSection(id,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function toggleSanction(el){
+  el.classList.toggle('open');
+}
+</script>
+</body>
+</html>
